@@ -3,6 +3,13 @@
 
   outputs = _: {
     templates = {
+      devshell = {
+        path = ./shell;
+        description = "Simple devshell";
+        welcomeText = ''
+          Run `echo 'use flake' > .envrc && direnv allow` to get started.
+        '';
+      };
       rust-shell = {
         path = ./rust/shell;
         description = "Latest nightly Rust in a devshell";
