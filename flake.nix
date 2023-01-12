@@ -6,16 +6,17 @@
       devshell = {
         path = ./devshell;
         description = "Simple devshell";
+      };
+      lua-plugin = {
+        path = ./lua/plugin;
+        description = "Lua Neovim plugin";
         welcomeText = ''
-          Run `echo 'use flake' > .envrc && direnv allow` to get started.
+          Run `nix run .#template-init -- PLUGIN_NAME` to get started.
         '';
       };
       rust-shell = {
         path = ./rust/shell;
         description = "Latest nightly Rust in a devshell";
-        welcomeText = ''
-          Run `echo 'use flake' > .envrc && direnv allow` to get started.
-        '';
       };
     };
   };
