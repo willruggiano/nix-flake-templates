@@ -4,7 +4,7 @@
   outputs = _: {
     templates = {
       devshell = {
-        path = ./shell;
+        path = ./devshell;
         description = "Simple devshell";
         welcomeText = ''
           Run `echo 'use flake' > .envrc && direnv allow` to get started.
