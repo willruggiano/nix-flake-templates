@@ -1,0 +1,15 @@
+### direnv
+.direnv
+
+### pre-commit
+.pre-commit-config.yaml
+
+### nix
+result
+
+### rust
+debug/
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
