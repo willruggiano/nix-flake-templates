@@ -48,7 +48,6 @@
           settings = {
             hooks.alejandra.enable = true;
             hooks.rustfmt.enable = true;
-            hooks.clippy.enable = true;
             hooks.cargo-check.enable = true;
           };
         };
