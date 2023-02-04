@@ -36,7 +36,7 @@
 
         devShells.default = pkgs.mkShell {
           name = "REPLACE_ME";
-          buildInputs = [toolchain];
+          buildInputs = with pkgs; [cargo-expand toolchain];
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';
