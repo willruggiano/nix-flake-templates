@@ -38,14 +38,19 @@
         };
 
         devShells.default = pkgs.mkShell {
-          name = "REPLACE_ME-nvim";
-          buildInputs = with pkgs; [lemmy-help];
+          name = "REPLACE_ME.nvim";
+          buildInputs = with pkgs; [lemmy-help luajit];
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';
         };
 
         formatter = pkgs.alejandra;
+
+        packages.default = pkgs.vimUtils.buildVimPluginFrom2Nix {
+          name = "REPLACE_ME.nvim";
+          src = ./.;
+        };
 
         pre-commit = {
           settings = {
