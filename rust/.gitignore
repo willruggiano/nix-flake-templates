@@ -1,5 +1,7 @@
 ### direnv
-.direnv
+.devenv/
+.direnv/
+.envrc
 
 ### pre-commit
 .pre-commit-config.yaml
@@ -10,6 +12,5 @@ result
 ### rust
 debug/
 target/
-Cargo.lock
 **/*.rs.bk
 *.pdb
