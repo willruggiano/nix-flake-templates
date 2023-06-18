@@ -1,5 +1,5 @@
 [package]
-name = "REPLACE_ME"
+name = "FLAKE_CRATE_NAME"
 version = "0.1.0"
 edition = "2021"
 

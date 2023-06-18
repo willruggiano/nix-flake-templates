@@ -1,4 +1,6 @@
 {
+  description = "FLAKE_NAME";
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     devenv.url = "github:cachix/devenv";
@@ -23,28 +25,13 @@
         pkgs,
         ...
       }: let
-        crateName = "REPLACE_ME";
+        crateName = "FLAKE_CRATE_NAME";
         crateOutputs = config.nci.outputs."${crateName}";
       in {
-        apps.template-init.program = pkgs.writeShellApplication {
-          name = "template-init";
-          runtimeInputs = with pkgs; [cargo coreutils findutils gnused ripgrep];
-          text = ''
-            rg -l REPLACE_ME | xargs -I{} sed -i s/REPLACE_ME/"$1"/g {}
-            rg -l CRATE_NAME | xargs -I{} sed -i s/CRATE_NAME/"$(echo "$1" | tr '-' '_')"/g {}
-            cargo generate-lockfile
-            git init && git add -A
-            git commit -m 'chore: initial commit'
-            echo 'use flake' > .envrc && direnv allow
-            # shellcheck disable=SC2016
-            echo '[nix-flake-templates] Template init done. You can remove `app.template-init` from flake.nix now.'
-          '';
-        };
-
         devenv.shells.default = let
           inherit (crateOutputs) devShell;
         in {
-          name = "REPLACE_ME";
+          name = "FLAKE_NAME";
 
           packages =
             devShell.nativeBuildInputs

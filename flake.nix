@@ -1,7 +1,20 @@
 {
   description = "A collection of Flake templates";
 
-  outputs = _: {
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+
+  outputs = {nixpkgs, ...}: {
+    apps.x86_64-linux = let
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+      };
+    in {
+      rust = {
+        type = "app";
+        program = "${pkgs.callPackage ./bin/rust.nix {}}/bin/template-init";
+      };
+    };
+
     templates = {
       lua = {
         path = ./lua;
@@ -13,9 +26,6 @@
       rust = {
         path = ./rust;
         description = "Ready to go Rust binary application";
-        welcomeText = ''
-          Run `nix run .#template-init -- NAME` to get started.
-        '';
       };
     };
   };
